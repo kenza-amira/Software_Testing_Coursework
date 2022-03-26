@@ -1,0 +1,17 @@
+﻿s1813674
+Task 2.2
+
+
+Even if the screenshot shows perfect coverage for Option.java there are still 2 branches that are uncovered and this is due to the fact that they can’t be accessed.
+
+
+Starting with the statement this==obj||!notEqual within the equals function: In order for all the branches to be covered we would need to evaluate all the 4 possible combinations, however that would mean having a statement that translates to: “The options are the same and the options are not the same.” Which is impossible.
+
+
+The other statement that is highlighted in yellow is within the same function and it is: getClass() != obj.getClass(). The reason why we can’t access both branches of this statement is because we can’t get it to evaluate to False. For it to evaluate to false we would need to call the equals function on an object from another class (type) however this would cause a class casting error as this function is only callable on Option objects.
+
+
+Same as for Option.java, OptionMap.java shows 100% coverage but some branches are still highlighted in yellow. They’re all of the form if(option != null) and are called from within the following functions: setValueWithOptionName and setValueWithOptionShortcut. Since we are trying to test only using the parser class, then it is impossible for us to get the option variable to evaluate to null as these two functions are called within the replace() function that already makes sure that null options can’t exist and therefore would throw an error.
+
+
+For the Parser.java file, some branches are uncovered. A red highlighted one is the one within the switch statement in the getInteger function. We can’t reach the statement default: result = 0. That is because, the infrastructure of the program forces us to specify a Type for each Option, hence we can’t go to default. This is why we can’t reach 100% branch coverage for Parser. There are also some yellow highlighted branches that we can’t reach for the same reasons specified above. It is impossible to get all theoretical possible evaluations within the program.
